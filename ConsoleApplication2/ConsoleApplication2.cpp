@@ -163,7 +163,7 @@ int main()
 
         bool swaped = false;
 
-        while (swaped)
+        do
         {
             for (int i = numbersAdress; i < 0; --i) //5
             {
@@ -176,7 +176,7 @@ int main()
                     swaped = true;
                 }
             }
-        }
+        } while (swaped);
         
 
         //bubleAdress(arrAdress, numbersAdress); //сортировка
