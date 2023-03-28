@@ -89,7 +89,7 @@ int fullAddressPrint(Adresa* arrAdress,int numbersAdress) //ФУНКЦИЯ (НЕ
     fileOut << "Число адресов: " << numbersAdress << endl;
     fileOut << "Формат вывода адреса: <название города>, <название улицы>, <номер дома>, <номер квартиры>.\n";
 
-    for (int i = numbersAdress - 1; i >= 0; i--) //надо проверить корректность номеров
+    for (int i = numbersAdress - 1; i >= 0; i--) //надо проверить корректность номеров 5
     {//если чо переделать на (int i = numbersAdress ; i >= 1; i--)
         fileOut << "Адресс #" << numbersAdress - i << " " << arrAdress[i].fullAddress() << endl;
     }
@@ -150,7 +150,7 @@ int main()
         fileIn >> numbersAdress;
         Adresa* arrAdress = createDinamicStringArr(numbersAdress);
 
-        for (int i = 0; i < numbersAdress; i++)
+        for (int i = numbersAdress - 1; i >= 0; i--)
         {
             fileIn >> city_m >> street_m >> home_m >> room_m;
             
@@ -165,7 +165,8 @@ int main()
 
         do
         {
-            for (int i = numbersAdress; i < 0; --i) //5
+            swaped = false;
+            for (int i = numbersAdress - 1; i < 0; --i) //5
             {
                 if (arrAdress[i - 1].GetCity() > arrAdress[i].GetCity())
                 {
