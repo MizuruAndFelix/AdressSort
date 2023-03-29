@@ -62,9 +62,16 @@ public:
     {
         return full;
     }
+    bool comprasion(Adresa* arrAdress, int i)
+    {
+        return (arrAdress[i - 1].city > arrAdress[i].city);
+    }
+    
     string fullAddress();
     Adresa() {}
 };
+
+string fullAddress();
 
 
 string Adresa::fullAddress() //полный адресс в строку
@@ -108,6 +115,7 @@ void deleteTextArr(Adresa* stringArr, int numbersAdress) //удалить мас
     delete[] stringArr;
 }
 
+
 //void bubleAdress(Adresa* arrAdress, int numbersAdress) //пузырек сортировка
 //{
 //    string t = {};
@@ -126,6 +134,7 @@ void deleteTextArr(Adresa* stringArr, int numbersAdress) //удалить мас
 //        }
 //    }
 //}
+
 int main()
 {
     setlocale(LC_ALL, ".UTF8");
@@ -162,15 +171,13 @@ int main()
         fileIn.close(); //закрыт адресса в массивах
 
         bool swaped = false;
-
+        Adresa t;
         do
         {
-            swaped = false;
             for (int i = numbersAdress - 1; i < 0; --i) //5
             {
-                if (arrAdress[i - 1].GetCity() > arrAdress[i].GetCity())
+                if (t.comprasion(arrAdress, i))
                 {
-                    Adresa t;
                     t = arrAdress[i];
                     arrAdress[i] = arrAdress[i - 1];
                     arrAdress[i - 1] = t;
@@ -178,9 +185,7 @@ int main()
                 }
             }
         } while (swaped);
-        
-
-        //bubleAdress(arrAdress, numbersAdress); //сортировка
+       //bublesort
 
         fullAddressPrint(arrAdress, numbersAdress); //печать в out.txt
 
