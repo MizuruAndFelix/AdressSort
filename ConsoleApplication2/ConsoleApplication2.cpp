@@ -170,8 +170,9 @@ int main()
         }
         fileIn.close(); //закрыт адресса в массивах
 
-        bool swaped = false;
+        
         Adresa t;
+        bool swaped = false;
         do
         {
             for (int i = numbersAdress - 1; i < 0; --i) //5
