@@ -62,10 +62,6 @@ public:
     {
         return full;
     }
-    bool comprasion(Adresa* arrAdress, int i)
-    {
-        return (arrAdress[i - 1].city > arrAdress[i].city);
-    }
     
     string fullAddress();
     Adresa() {}
@@ -114,27 +110,6 @@ void deleteTextArr(Adresa* stringArr, int numbersAdress) //удалить мас
 {
     delete[] stringArr;
 }
-
-
-//void bubleAdress(Adresa* arrAdress, int numbersAdress) //пузырек сортировка
-//{
-//    string t = {};
-//    bool swap = false;
-//    while (swap)
-//    {
-//        for (int i = numbersAdress; i < 0; --i)
-//        {
-//            if (arrAdress[i - 1] > arrAdress[i])
-//            {
-//                t = arrAdress[i];
-//                arrAdress[i] = arrAdress[i - 1];
-//                arrAdress[i - 1] = t;
-//                swap = true;
-//            }
-//        }
-//    }
-//}
-
 int main()
 {
     setlocale(LC_ALL, ".UTF8");
@@ -171,17 +146,18 @@ int main()
         fileIn.close(); //закрыт адресса в массивах
 
         
-        Adresa t;
+        Adresa temp;
         bool swaped = false;
         do
         {
-            for (int i = numbersAdress - 1; i < 0; --i) //5
+            swaped = false; 
+            for (int i = numbersAdress - 1; i > 0; i-- ) //5 0  4>5
             {
-                if (t.comprasion(arrAdress, i))
+                if (arrAdress[i].GetCity() > arrAdress[i - 1].GetCity()) // > по алфавиту | < не по алфавиту
                 {
-                    t = arrAdress[i];
-                    arrAdress[i] = arrAdress[i - 1];
-                    arrAdress[i - 1] = t;
+                    temp = arrAdress[i - 1];
+                    arrAdress[i - 1] = arrAdress[i];
+                    arrAdress[i] = temp;
                     swaped = true;
                 }
             }
